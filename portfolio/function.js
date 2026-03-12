@@ -17,7 +17,6 @@ const phrases = [
 let phraseIndex = 0;
 let charIndex   = 0;
 let isDeleting  = false;
-let typingTimer = null;
 
 function type() {
   const current = phrases[phraseIndex];
@@ -33,7 +32,6 @@ function type() {
   let delay = isDeleting ? 40 : 70;
 
   if (!isDeleting && charIndex === current.length) {
-    // Pausa alla fine della frase
     delay = 2000;
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
@@ -42,19 +40,15 @@ function type() {
     delay = 400;
   }
 
-  typingTimer = setTimeout(type, delay);
+  setTimeout(type, delay);
 }
 
-// Avvia il typing solo se l'elemento esiste
-if (typingTarget) {
-  setTimeout(type, 800);
-}
+if (typingTarget) setTimeout(type, 800);
 
-// ── Reveal on scroll (IntersectionObserver) ──
+// ── Reveal on scroll ────────────────────────
 const reveals = Array.from(document.querySelectorAll('.reveal'));
 
 if (!('IntersectionObserver' in window)) {
-  // Fallback browser vecchi
   reveals.forEach(el => el.classList.add('visible'));
 } else {
   const revealObserver = new IntersectionObserver((entries, obs) => {
@@ -69,7 +63,7 @@ if (!('IntersectionObserver' in window)) {
   reveals.forEach(el => revealObserver.observe(el));
 }
 
-// ── ScrollSpy: evidenzia la voce nav attiva ──
+// ── ScrollSpy ───────────────────────────────
 const sections = Array.from(document.querySelectorAll('main section[id]'));
 const navLinks  = Array.from(document.querySelectorAll('nav a[data-nav]'));
 
@@ -83,32 +77,41 @@ if (sections.length && navLinks.length) {
         });
       }
     });
-  }, {
-    rootMargin: '-40% 0px -55% 0px', // si attiva quando la sezione è circa al centro
-    threshold: 0
-  });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
   sections.forEach(sec => spyObserver.observe(sec));
 }
 
-const track = document.querySelector('.carousel-track');
-const cards = Array.from(track.children);
+// ── Carousel Progetti ────────────────────────
+const track   = document.querySelector('.carousel-track');
 const prevBtn = document.querySelector('.carousel-btn.prev');
 const nextBtn = document.querySelector('.carousel-btn.next');
 
-let index = 0;
+if (track && prevBtn && nextBtn) {
+  const cards = Array.from(track.children);
+  let index = 0;
 
-function updateCarousel() {
-  const cardWidth = cards[0].getBoundingClientRect().width + 32; // card + gap
-  track.style.transform = `translateX(-${index * cardWidth}px)`;
+  function getCardWidth() {
+    // larghezza card + gap (24px)
+    return cards[0].getBoundingClientRect().width + 24;
+  }
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * getCardWidth()}px)`;
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === cards.length - 1;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (index < cards.length - 1) { index++; updateCarousel(); }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (index > 0) { index--; updateCarousel(); }
+  });
+
+  window.addEventListener('resize', updateCarousel, { passive: true });
+
+  // stato iniziale
+  updateCarousel();
 }
-
-nextBtn.addEventListener('click', () => {
-  if (index < cards.length - 1) index++;
-  updateCarousel();
-});
-
-prevBtn.addEventListener('click', () => {
-  if (index > 0) index--;
-  updateCarousel();
-});

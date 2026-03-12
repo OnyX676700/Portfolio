@@ -5,42 +5,27 @@
   <title>Personal Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="img/logo.png" type="image/jpeg">
-
-  <!-- SEO -->
   <meta name="description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico da Trapani.">
   <meta name="author" content="Federico La Russa">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="Personal Portfolio">
   <meta property="og:description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="img/18esimo.jpg">
-
-  <!-- Font: Syne (titoli) + DM Sans (corpo) -->
+  <meta property="og:image" content="img/Pic.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- JS -->
   <script src="function.js" defer></script>
 </head>
-
 <body>
 
-<!-- HEADER -->
 <header id="site-header">
   <div class="container header-content">
     <div class="header-left">
-      <img src="img/18esimo.jpg" alt="Foto di Federico La Russa" class="profile-pic" width="48" height="48" fetchpriority="high">
+      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="48" height="48" fetchpriority="high">
       <span class="header-name">Federico La Russa</span>
     </div>
-
     <nav aria-label="Navigazione principale">
       <ul>
         <li><a href="#about" data-nav>Chi sono</a></li>
@@ -48,6 +33,7 @@
         <li><a href="#skills" data-nav>Competenze</a></li>
         <li><a href="#projects" data-nav>Progetti</a></li>
         <li><a href="#contact" data-nav>Contatti</a></li>
+        <li><a href="cv.pdf" download="CV.pdf" class="cv-link">CV</a></li>
       </ul>
     </nav>
   </div>
@@ -55,11 +41,10 @@
 
 <main>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="container hero-layout">
       <div class="hero-text">
-        <p class="hero-label">👋Benvenuti nel mio portfolio.</p>
+        <p class="hero-label">👋 Benvenuti nel mio portfolio.</p>
         <h1>Junior Developer<br><span class="accent">&amp; Perito Informatico</span></h1>
         <p class="hero-sub" id="typing-target"></p>
         <div class="hero-cta">
@@ -69,164 +54,140 @@
       </div>
       <div class="hero-image">
         <div class="avatar-ring">
-          <img src="img/18esimo.jpg" alt="Ritratto di Federico La Russa" class="avatar" width="280" height="280">
+          <img src="img/Pic.png" alt="Ritratto di Federico La Russa" class="avatar" width="280" height="280">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CHI SONO -->
   <section id="about">
     <div class="container">
       <h2 class="section-title reveal">Chi sono</h2>
       <div class="about-grid reveal">
-        <p>
-          Mi chiamo <strong>Federico La Russa</strong>, nato il 07/11/2006 a Trapani.
-          Ho una solida base come perito informatico e mi piace progettare e sviluppare
-          soluzioni digitali moderne, funzionali e ben strutturate.
-        </p>
-        <p>
-          Mi appassiona imparare nuove tecnologie, migliorare il mio codice e lavorare
-          su progetti che uniscono logica, creatività e usabilità.
-        </p>
+        <p>Mi chiamo <strong>Federico La Russa</strong>, nato il 07/11/2006 a Trapani. Ho una solida base come perito informatico e mi piace progettare e sviluppare soluzioni digitali moderne, funzionali e ben strutturate.</p>
+        <p>Mi appassiona imparare nuove tecnologie, migliorare il mio codice e lavorare su progetti che uniscono logica, creatività e usabilità.</p>
       </div>
     </div>
   </section>
 
-  <!-- FORMAZIONE -->
   <section id="education">
     <div class="container">
       <h2 class="section-title reveal">Formazione</h2>
       <div class="cards">
-
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <h3>Perito Informatico</h3>
           <p class="card-meta">2020 – 2025 · I.T.I Leonardo da Vinci · Trapani</p>
           <p>Percorso quinquennale in informatica con programmazione, reti, sistemi operativi, basi di dati e sviluppo software.</p>
         </article>
-
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-certificate"></i></div>
           <h3>Certificazione EIPASS</h3>
           <p class="card-meta">2025 · Trapani</p>
           <p>Competenze digitali in ambito Office, navigazione sicura, email, sicurezza informatica e servizi digitali.</p>
         </article>
-
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-code"></i></div>
           <h3>Sviluppo software Zucchetti</h3>
           <p class="card-meta">2025 · Trapani</p>
           <p>Sviluppo di un'applicazione interattiva in JavaScript, HTML e CSS in collaborazione con Zucchetti.</p>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- COMPETENZE -->
   <section id="skills">
     <div class="container">
       <h2 class="section-title reveal">Competenze</h2>
       <div class="skills-grid">
-
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-globe"></i> Linguaggi &amp; Web</h3>
           <div class="badges">
             <span class="badge"><i class="fa-brands fa-html5"></i> HTML</span>
             <span class="badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
-            <span class="badge"><i class="fa-solid fa-tailwind-css"></i> Tailwind CSS</span>
+            <span class="badge"> Tailwind CSS</span>
             <span class="badge"><i class="fa-brands fa-js"></i> JavaScript</span>
-            <span class="badge"><i class="fa-solid fa-typescript"></i> TypeScript</span>
+            <span class="badge"> TypeScript</span>
             <span class="badge"><i class="fa-brands fa-java"></i> Java</span>
             <span class="badge"><i class="fa-brands fa-php"></i> PHP</span>
-            <span class="badge"><i class="fa-solid fa-c"></i> C</span>
-            <span class="badge"><i class="fa-brands fa-cpp"></i> C++</span>
+            <span class="badge"> C</span>
+            <span class="badge"> C++</span>
             <span class="badge"><i class="fa-solid fa-code"></i> Assembly</span>
           </div>
         </div>
-
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-database"></i> Database &amp; Sistemi</h3>
           <div class="badges">
-            <span class="badge"><i class="fa-solid fa-mysql"></i> MySQL</span>
+            <span class="badge"> MySQL</span>
             <span class="badge"><i class="fa-brands fa-windows"></i> Windows</span>
             <span class="badge"><i class="fa-solid fa-folder"></i> Pacchetto Office</span>
             <span class="badge"><i class="fa-solid fa-envelope"></i> Posta elettronica</span>
           </div>
         </div>
-
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-network-wired"></i> Reti &amp; Sicurezza</h3>
           <div class="badges">
             <span class="badge"><i class="fa-solid fa-laptop"></i> Cisco Packet Tracer</span>
-            <span class="badge"><i class="fa-solid fa-router"></i> Router &amp; Switch</span>
+            <span class="badge"> Router &amp; Switch</span>
             <span class="badge"><i class="fa-solid fa-shield-alt"></i> Sicurezza informatica</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- PROGETTI -->
   <section id="projects">
-  <div class="container">
-    <h2 class="section-title reveal">Progetti</h2>
-
-    <div class="carousel">
-      <button class="carousel-btn prev">&#10094;</button>
-
-      <div class="carousel-track">
-        <article class="card card--project reveal">
-          <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-          <h3>Gioco STEM — Indovina il personaggio</h3>
-          <div class="tech-badges">
-            <span class="badge badge--tech">JavaScript</span>
-            <span class="badge badge--tech">HTML</span>
-            <span class="badge badge--tech">CSS</span>
+    <div class="container">
+      <h2 class="section-title reveal">Progetti</h2>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Precedente">&#10094;</button>
+        <div class="carousel">
+          <div class="carousel-track">
+            <article class="card card--project">
+              <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+              <h3>Gioco STEM — Indovina il personaggio</h3>
+              <div class="tech-badges">
+                <span class="badge badge--tech">JavaScript</span>
+                <span class="badge badge--tech">HTML</span>
+                <span class="badge badge--tech">CSS</span>
+              </div>
+              <p>Applicazione interattiva sviluppata in collaborazione con Zucchetti per indovinare personaggi del mondo STEM.</p>
+              <a href="#" class="btn-card disabled">Non ho il file!</a>
+            </article>
+            <article class="card card--project">
+              <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
+              <h3>Portfolio personale</h3>
+              <div class="tech-badges">
+                <span class="badge badge--tech">HTML</span>
+                <span class="badge badge--tech">CSS</span>
+                <span class="badge badge--tech">JavaScript</span>
+              </div>
+              <p>Sito portfolio personale.</p>
+              <a href="#" class="btn-card">Sei qui 👋</a>
+            </article>
+            <article class="card card--project">
+              <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+              <h3>Workhub Milano</h3>
+              <div class="tech-badges">
+                <span class="badge badge--tech">HTML</span>
+                <span class="badge badge--tech">CSS</span>
+                <span class="badge badge--tech">JavaScript</span>
+                <span class="badge badge--tech">Tailwind CSS</span>
+              </div>
+              <p>Sito di un centro di lavoro collaborativo a Milano.</p>
+              <a href="#" class="btn-card disabled">Non ho il file!</a>
+            </article>
           </div>
-          <p>Applicazione interattiva…</p>
-          <a href="#" class="btn-card disabled">Non ho il file!</a>
-        </article>
-
-        <article class="card card--project reveal">
-          <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
-          <h3>Portfolio personale</h3>
-          <div class="tech-badges">
-            <span class="badge badge--tech">HTML</span>
-            <span class="badge badge--tech">CSS</span>
-            <span class="badge badge--tech">JavaScript</span>
-          </div>
-          <p>Sito portfolio personale…</p>
-          <a href="#" class="btn-card">Sei qui 👋</a>
-        </article>
-
-        <article class="card card--project reveal">
-          <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
-          <h3>Portfolio personale</h3>
-          <div class="tech-badges">
-            <span class="badge badge--tech">HTML</span>
-            <span class="badge badge--tech">CSS</span>
-            <span class="badge badge--tech">JavaScript</span>
-            <span class="badge badge--tech">Tailwind CSS</span>
-          </div>
-          <p>Workhub Milano…</p>
-          <a href="#" class="btn-card">Sei qui 👋</a>
-        </article>
+        </div>
+        <button class="carousel-btn next" aria-label="Successivo">&#10095;</button>
       </div>
-
-      <button class="carousel-btn next">&#10095;</button>
     </div>
-  </div>
   </section>
 
-  <!-- CONTATTI -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title reveal">Contatti</h2>
       <p class="contact-intro reveal">Per collaborazioni, opportunità di lavoro o semplicemente per un saluto:</p>
-
       <div class="contact-grid reveal">
         <a href="mailto:fedelarussa06@gmail.com" class="contact-card">
           <i class="fa-solid fa-envelope"></i>
@@ -257,23 +218,18 @@
           </div>
         </a>
       </div>
-
       <p class="contact-location reveal"><i class="fa-solid fa-map-marker-alt"></i> Trapani, Italia</p>
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
     <p>© <span id="year"></span> Federico La Russa · Tutti i diritti riservati</p>
     <p class="small">Autorizzo il trattamento dei miei dati personali ai sensi del GDPR.</p>
   </div>
 </footer>
-
-<!-- JS -->
-<script src="script.js"></script>
 
 </body>
 </html>

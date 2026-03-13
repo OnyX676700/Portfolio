@@ -14,6 +14,7 @@ const phrases = [
   "Studio, costruisco, miglioro.",
   "Trasformo idee in codice funzionante.",
 ];
+
 let phraseIndex = 0;
 let charIndex   = 0;
 let isDeleting  = false;
@@ -82,36 +83,27 @@ if (sections.length && navLinks.length) {
   sections.forEach(sec => spyObserver.observe(sec));
 }
 
-// ── Carousel Progetti ────────────────────────
-const track   = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
+// ── Barre lingue animate all'entrata ────────
+const languageBars = Array.from(document.querySelectorAll('.language-bar'));
 
-if (track && prevBtn && nextBtn) {
-  const cards = Array.from(track.children);
-  let index = 0;
+if (languageBars.length && 'IntersectionObserver' in window) {
+  const barObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // forza il reflow così la transizione parte da 0
+        entry.target.style.width = '0%';
+        requestAnimationFrame(() => {
+          entry.target.style.width = entry.target.style.getPropertyValue('--bar-width') ||
+            getComputedStyle(entry.target).getPropertyValue('--bar-width');
+        });
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
 
-  function getCardWidth() {
-    // larghezza card + gap (24px)
-    return cards[0].getBoundingClientRect().width + 24;
-  }
-
-  function updateCarousel() {
-    track.style.transform = `translateX(-${index * getCardWidth()}px)`;
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === cards.length - 1;
-  }
-
-  nextBtn.addEventListener('click', () => {
-    if (index < cards.length - 1) { index++; updateCarousel(); }
+  // azzera subito la width, la CSS var resta come target
+  languageBars.forEach(bar => {
+    bar.style.width = '0%';
+    barObserver.observe(bar);
   });
-
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) { index--; updateCarousel(); }
-  });
-
-  window.addEventListener('resize', updateCarousel, { passive: true });
-
-  // stato iniziale
-  updateCarousel();
 }

@@ -272,10 +272,15 @@ nav a:hover::after, nav a.active::after { transform: scaleX(1); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  max-width: 820px;
+  max-width: 900px;
 }
 .about-grid p { font-size: 16px; color: var(--text); line-height: 1.8; }
 .about-grid strong { color: var(--accent-light); font-weight: 600; }
+
+/* 3 paragrafi: il terzo occupa tutta la larghezza */
+.about-grid p:last-child {
+  grid-column: 1 / -1;
+}
 
 /* =============================================
    CARDS
@@ -398,6 +403,96 @@ nav a:hover::after, nav a.active::after { transform: scaleX(1); }
 .badges { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* =============================================
+   PROGETTI — GRID (sostituisce il carousel)
+   ============================================= */
+#projects { background: var(--bg); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* =============================================
+   LINGUE
+   ============================================= */
+#languages { background: var(--bg-alt); }
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 720px;
+}
+.language-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.language-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover);
+  border-color: var(--accent);
+}
+.language-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.language-flag {
+  font-size: 36px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.language-header h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.language-level {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+.language-level.native {
+  background: rgba(125,112,186,0.18);
+  color: var(--accent-light);
+  border: 1px solid rgba(125,112,186,0.35);
+}
+.language-level.b1 {
+  background: rgba(222,193,255,0.08);
+  color: var(--text-muted);
+  border: 1px solid var(--card-border);
+}
+.language-bar-wrap {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.language-bar {
+  height: 100%;
+  width: var(--bar-width, 0%);
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 10px;
+  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.language-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* =============================================
    CONTATTI
    ============================================= */
 #contact { background: var(--bg); }
@@ -467,70 +562,24 @@ footer .small { font-size: 11px; opacity: 0.5; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .cards .reveal:nth-child(2) { transition-delay: 0.1s; }
 .cards .reveal:nth-child(3) { transition-delay: 0.2s; }
+.projects-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.projects-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
 .contact-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
 .contact-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
 .contact-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+.languages-grid .reveal:nth-child(2) { transition-delay: 0.12s; }
 
 /* =============================================
    ACCESSIBILITÀ
    ============================================= */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .btn-primary, .btn-ghost, .card, .contact-card, .skill-group {
+  .reveal, .btn-primary, .btn-ghost, .card, .contact-card, .skill-group, .language-card {
     transition: none; animation: none;
   }
   .reveal { opacity: 1; transform: none; }
   .avatar-ring::before, .avatar-ring::after, .hero-sub::after { animation: none; }
-}
-
-/* =============================================
-   CAROUSEL PROGETTI
-   ============================================= */
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.carousel {
-  overflow: hidden;
-  flex: 1;
-  min-width: 0;
-}
-.carousel-track {
-  display: flex;
-  gap: 24px;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.card--project {
-  flex: 0 0 calc(50% - 12px);
-  min-width: 280px;
-  max-width: 420px;
-}
-.carousel-btn {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--bg-card);
-  border: 1px solid var(--card-border);
-  color: var(--text-muted);
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--transition), border-color var(--transition), color var(--transition), opacity var(--transition);
-  line-height: 1;
-}
-.carousel-btn:hover:not(:disabled) {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--text);
-  box-shadow: 0 4px 16px rgba(125,112,186,0.35);
-}
-.carousel-btn:disabled {
-  opacity: 0.25;
-  cursor: default;
+  .language-bar { transition: none; }
 }
 
 /* =============================================
@@ -543,7 +592,7 @@ footer .small { font-size: 11px; opacity: 0.5; }
   .hero-cta { justify-content: center; }
   .hero-sub { margin-inline: auto; }
   .about-grid { grid-template-columns: 1fr; }
-  .card--project { flex: 0 0 calc(80% - 12px); }
+  .about-grid p:last-child { grid-column: auto; }
 }
 @media (max-width: 768px) {
   section { padding: 60px 0; }
@@ -552,6 +601,6 @@ footer .small { font-size: 11px; opacity: 0.5; }
   nav a { font-size: 13px; padding: 5px 10px; }
   .hero-layout { gap: 36px; }
   #hero { padding: 60px 0 50px; }
-  .carousel-btn { width: 36px; height: 36px; font-size: 13px; }
-  .card--project { flex: 0 0 calc(90% - 12px); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .languages-grid { grid-template-columns: 1fr; }
 }

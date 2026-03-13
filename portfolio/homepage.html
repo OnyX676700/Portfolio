@@ -3,103 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <title>Personal Portfolio</title>
+
+  <!-- Viewport: adatta il layout alla larghezza del dispositivo (fondamentale per il responsive) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="img/logo.png" type="image/jpeg">
+
+  <!-- Favicon mostrato nella tab del browser -->
+  <link rel="icon" href="img/favicon.png" type="image/jpeg">
+
+  <!-- Meta SEO: description e author vengono letti dai motori di ricerca -->
   <meta name="description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico da Trapani.">
   <meta name="author" content="Federico La Russa">
+
+  <!-- Open Graph: definisce titolo, descrizione e immagine di anteprima
+       quando il link viene condiviso su LinkedIn, WhatsApp, ecc. -->
   <meta property="og:title" content="Personal Portfolio">
   <meta property="og:description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/Pic.png">
+
+  <!-- Preconnect: il browser apre subito la connessione TCP verso Google Fonts
+       ancora prima di scaricare i CSS, riducendo la latenza percepita -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Font Google: Syne (titoli display) e DM Sans (testo corpo) -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6: libreria di icone SVG usate in badge, card e contatti -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Foglio di stile principale del sito -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- defer: lo script viene scaricato in parallelo ma eseguito solo dopo
+       che tutto l'HTML è stato parsato, evitando blocchi al rendering -->
   <script src="function.js" defer></script>
 </head>
 <body>
 
+<!--  HEADER  -->
 <header id="site-header">
   <div class="container header-content">
+
+    <!-- Logo: foto profilo in miniatura + nome -->
     <div class="header-left">
+
       <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="48" height="48" fetchpriority="high">
       <span class="header-name">Federico La Russa</span>
     </div>
+
+    <!-- Navigazione principale -->
     <nav aria-label="Navigazione principale">
       <ul>
-        <li><a href="#about" data-nav>Chi sono</a></li>
+        <li><a href="#about"     data-nav>Chi sono</a></li>
         <li><a href="#education" data-nav>Formazione</a></li>
-        <li><a href="#skills" data-nav>Competenze</a></li>
-        <li><a href="#projects" data-nav>Progetti</a></li>
-        <li><a href="#contact" data-nav>Contatti</a></li>
+        <li><a href="#skills"    data-nav>Competenze</a></li>
+        <li><a href="#projects"  data-nav>Progetti</a></li>
+        <li><a href="#languages" data-nav>Lingue</a></li>
+        <li><a href="#contact"   data-nav>Contatti</a></li>
+        <!-- download="CV.pdf": forza il download invece di aprire il file nel browser -->
         <li><a href="cv.pdf" download="CV.pdf" class="cv-link">CV</a></li>
       </ul>
     </nav>
+
   </div>
 </header>
 
 <main>
 
+  <!-- HERO -->
   <section id="hero">
     <div class="container hero-layout">
+
+      <!-- Colonna sinistra: label, titolo, typing effect e CTA -->
       <div class="hero-text">
         <p class="hero-label">👋 Benvenuti nel mio portfolio.</p>
+
+        <!-- h1: deve essere unico per pagina, ha il massimo peso SEO -->
         <h1>Junior Developer<br><span class="accent">&amp; Perito Informatico</span></h1>
+
+        <!-- Paragrafo vuoto: il testo viene scritto/cancellato
+             carattere per carattere dalla funzione type() in JS -->
         <p class="hero-sub" id="typing-target"></p>
+
         <div class="hero-cta">
           <a href="#projects" class="btn-primary">Vedi i progetti</a>
-          <a href="#contact" class="btn-ghost">Contattami</a>
+          <a href="#contact"  class="btn-ghost">Contattami</a>
         </div>
       </div>
+
+      <!-- Colonna destra: foto con doppio anello animato (pulse-ring in CSS) -->
       <div class="hero-image">
         <div class="avatar-ring">
           <img src="img/Pic.png" alt="Ritratto di Federico La Russa" class="avatar" width="280" height="280">
         </div>
       </div>
+
     </div>
   </section>
 
+  <!-- CHI SONO -->
   <section id="about">
     <div class="container">
       <h2 class="section-title reveal">Chi sono</h2>
       <div class="about-grid reveal">
-        <p>Mi chiamo <strong>Federico La Russa</strong>, nato il 07/11/2006 a Trapani. Ho una solida base come perito informatico e mi piace progettare e sviluppare soluzioni digitali moderne, funzionali e ben strutturate.</p>
-        <p>Mi appassiona imparare nuove tecnologie, migliorare il mio codice e lavorare su progetti che uniscono logica, creatività e usabilità.</p>
+        <!-- Paragrafo 1: identità e percorso scolastico -->
+        <p>Mi chiamo <strong>Federico La Russa</strong>, ho 19 anni e vengo da Trapani. Ho conseguito il diploma di <strong>Perito Informatico</strong> all'I.T.I. Leonardo da Vinci, dove ho sviluppato una solida base in programmazione, reti, sistemi e sviluppo software.</p>
+        <!-- Paragrafo 2: motivazione e orientamento professionale -->
+        <p>La mia passione per l'informatica nasce dalla voglia di <strong>costruire cose che funzionano</strong>: mi piace partire da un'idea e trasformarla in un prodotto digitale curato, dalla struttura del codice all'interfaccia utente. Mi oriento verso lo <strong>sviluppo web full-stack</strong>, con particolare interesse per il frontend.</p>
+        <!-- Paragrafo 3: profilo umano — occupa l'intera larghezza della griglia -->
+        <p>Sono una persona curiosa, precisa e motivata a crescere. Cerco opportunità dove poter contribuire concretamente, imparare da professionisti esperti e migliorare ogni giorno.</p>
       </div>
     </div>
   </section>
 
+  <!-- FORMAZIONE -->
   <section id="education">
     <div class="container">
       <h2 class="section-title reveal">Formazione</h2>
       <div class="cards">
+
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <h3>Perito Informatico</h3>
           <p class="card-meta">2020 – 2025 · I.T.I Leonardo da Vinci · Trapani</p>
           <p>Percorso quinquennale in informatica con programmazione, reti, sistemi operativi, basi di dati e sviluppo software.</p>
         </article>
+
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-certificate"></i></div>
           <h3>Certificazione EIPASS</h3>
           <p class="card-meta">2025 · Trapani</p>
           <p>Competenze digitali in ambito Office, navigazione sicura, email, sicurezza informatica e servizi digitali.</p>
         </article>
+
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-code"></i></div>
           <h3>Sviluppo software Zucchetti</h3>
           <p class="card-meta">2025 · Trapani</p>
           <p>Sviluppo di un'applicazione interattiva in JavaScript, HTML e CSS in collaborazione con Zucchetti.</p>
         </article>
+
       </div>
     </div>
   </section>
 
+  <!-- COMPETENZE -->
   <section id="skills">
     <div class="container">
       <h2 class="section-title reveal">Competenze</h2>
       <div class="skills-grid">
+
+        <!-- Gruppo 1: linguaggi e tecnologie web front/backend -->
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-globe"></i> Linguaggi &amp; Web</h3>
           <div class="badges">
@@ -115,6 +170,8 @@
             <span class="badge"><i class="fa-solid fa-code"></i> Assembly</span>
           </div>
         </div>
+
+        <!-- Gruppo 2: database e strumenti di sistema/produttività -->
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-database"></i> Database &amp; Sistemi</h3>
           <div class="badges">
@@ -124,6 +181,8 @@
             <span class="badge"><i class="fa-solid fa-envelope"></i> Posta elettronica</span>
           </div>
         </div>
+
+        <!-- Gruppo 3: networking e sicurezza informatica -->
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-network-wired"></i> Reti &amp; Sicurezza</h3>
           <div class="badges">
@@ -132,63 +191,117 @@
             <span class="badge"><i class="fa-solid fa-shield-alt"></i> Sicurezza informatica</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- PROGETTI -->
   <section id="projects">
     <div class="container">
       <h2 class="section-title reveal">Progetti</h2>
-      <div class="carousel-wrapper">
-        <button class="carousel-btn prev" aria-label="Precedente">&#10094;</button>
-        <div class="carousel">
-          <div class="carousel-track">
-            <article class="card card--project">
-              <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-              <h3>Gioco STEM — Indovina il personaggio</h3>
-              <div class="tech-badges">
-                <span class="badge badge--tech">JavaScript</span>
-                <span class="badge badge--tech">HTML</span>
-                <span class="badge badge--tech">CSS</span>
-              </div>
-              <p>Applicazione interattiva sviluppata in collaborazione con Zucchetti per indovinare personaggi del mondo STEM.</p>
-              <a href="#" class="btn-card disabled">Non ho il file!</a>
-            </article>
-            <article class="card card--project">
-              <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
-              <h3>Portfolio personale</h3>
-              <div class="tech-badges">
-                <span class="badge badge--tech">HTML</span>
-                <span class="badge badge--tech">CSS</span>
-                <span class="badge badge--tech">JavaScript</span>
-              </div>
-              <p>Sito portfolio personale.</p>
-              <a href="#" class="btn-card">Sei qui 👋</a>
-            </article>
-            <article class="card card--project">
-              <div class="card-icon"><i class="fa-solid fa-building"></i></div>
-              <h3>Workhub Milano</h3>
-              <div class="tech-badges">
-                <span class="badge badge--tech">HTML</span>
-                <span class="badge badge--tech">CSS</span>
-                <span class="badge badge--tech">JavaScript</span>
-                <span class="badge badge--tech">Tailwind CSS</span>
-              </div>
-              <p>Sito di un centro di lavoro collaborativo a Milano.</p>
-              <a href="#" class="btn-card disabled">Non ho il file!</a>
-            </article>
+      <div class="projects-grid">
+
+        <article class="card card--project reveal">
+          <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>Gioco STEM — Indovina il personaggio</h3>
+          <!-- badge--tech: variante cromatica dei badge per le tecnologie usate -->
+          <div class="tech-badges">
+            <span class="badge badge--tech">JavaScript</span>
+            <span class="badge badge--tech">HTML</span>
+            <span class="badge badge--tech">CSS</span>
           </div>
-        </div>
-        <button class="carousel-btn next" aria-label="Successivo">&#10095;</button>
+          <p>Applicazione interattiva sviluppata in collaborazione con Zucchetti per indovinare personaggi del mondo STEM.</p>
+          <a href="#" class="btn-card disabled" aria-disabled="true">Non disponibile</a>
+        </article>
+
+        <article class="card card--project reveal">
+          <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
+          <h3>Portfolio personale</h3>
+          <div class="tech-badges">
+            <span class="badge badge--tech">HTML</span>
+            <span class="badge badge--tech">CSS</span>
+            <span class="badge badge--tech">JavaScript</span>
+          </div>
+          <p>Sito portfolio personale progettato e sviluppato da zero, con animazioni, scroll spy e design responsive.</p>
+          <a href="#" class="btn-card">Sei qui 👋</a>
+        </article>
+
+        <article class="card card--project reveal">
+          <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+          <h3>Workhub Milano</h3>
+          <div class="tech-badges">
+            <span class="badge badge--tech">HTML</span>
+            <span class="badge badge--tech">CSS</span>
+            <span class="badge badge--tech">JavaScript</span>
+            <span class="badge badge--tech">Tailwind CSS</span>
+          </div>
+          <p>Sito di un centro di lavoro collaborativo a Milano.</p>
+          <a href="#" class="btn-card disabled" aria-disabled="true">Non disponibile</a>
+        </article>
+
       </div>
     </div>
   </section>
 
+  <!-- LINGUE -->
+  <section id="languages">
+    <div class="container">
+      <h2 class="section-title reveal">Lingue</h2>
+      <div class="languages-grid">
+
+        <!-- Italiano: madrelingua, barra piena al 100% -->
+        <div class="language-card reveal">
+          <div class="language-header">
+            <!-- Bandiera Italia da flagcdn.com (w80 = 80px di larghezza, ottimale) -->
+            <div class="language-flag-wrap">
+              <img src="https://flagcdn.com/w80/it.png" alt="Bandiera Italia" class="language-flag-img">
+            </div>
+            <div>
+              <h3>Italiano</h3>
+              <!-- Classe "native": applica sfondo viola al badge livello -->
+              <span class="language-level native">Madrelingua</span>
+            </div>
+          </div>
+          <div class="language-bar-wrap-bar">
+            <!-- --bar-width: larghezza finale della barra dopo l'animazione -->
+            <div class="language-bar" style="--bar-width: 100%"></div>
+          </div>
+          <!-- Nota: descrive le capacità pratiche concrete -->
+          <p class="language-note">Lingua madre, parlata e scritta a livello avanzato in ogni contesto.</p>
+        </div>
+
+        <!-- Inglese: livello B1, barra al 55% -->
+        <div class="language-card reveal">
+          <div class="language-header">
+            <!-- Bandiera UK da flagcdn.com -->
+            <div class="language-flag-wrap">
+              <img src="https://flagcdn.com/w80/gb.png" alt="Bandiera UK" class="language-flag-img">
+            </div>
+            <div>
+              <h3>Inglese</h3>
+              <!-- Classe "b1": applica sfondo neutro al badge livello -->
+              <span class="language-level b1">Livello B1</span>
+            </div>
+          </div>
+          <div class="language-bar-wrap-bar">
+            <div class="language-bar" style="--bar-width: 55%"></div>
+          </div>
+          <!-- Nota: descrive le capacità pratiche concrete -->
+          <p class="language-note">Lettura tecnica, documentazione e comunicazione scritta di base.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title reveal">Contatti</h2>
       <p class="contact-intro reveal">Per collaborazioni, opportunità di lavoro o semplicemente per un saluto:</p>
       <div class="contact-grid reveal">
+
         <a href="mailto:fedelarussa06@gmail.com" class="contact-card">
           <i class="fa-solid fa-envelope"></i>
           <div>
@@ -196,6 +309,8 @@
             <span class="contact-value">fedelarussa06@gmail.com</span>
           </div>
         </a>
+
+        <!-- target="_blank": apre il link in una nuova scheda del browser -->
         <a href="https://www.linkedin.com/in/federico-la-russa-06/" target="_blank" rel="noopener" class="contact-card">
           <i class="fa-brands fa-linkedin"></i>
           <div>
@@ -203,6 +318,7 @@
             <span class="contact-value">federico-la-russa-06</span>
           </div>
         </a>
+
         <a href="https://github.com/OnyX676700" target="_blank" rel="noopener" class="contact-card">
           <i class="fa-brands fa-github"></i>
           <div>
@@ -210,6 +326,8 @@
             <span class="contact-value">OnyX676700</span>
           </div>
         </a>
+
+        <!-- tel: su mobile lancia direttamente la chiamata -->
         <a href="tel:+393456074838" class="contact-card">
           <i class="fa-solid fa-phone"></i>
           <div>
@@ -217,6 +335,7 @@
             <span class="contact-value">+39 345 607 4838</span>
           </div>
         </a>
+
       </div>
       <p class="contact-location reveal"><i class="fa-solid fa-map-marker-alt"></i> Trapani, Italia</p>
     </div>
@@ -224,6 +343,7 @@
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
     <p>© <span id="year"></span> Federico La Russa · Tutti i diritti riservati</p>

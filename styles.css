@@ -403,7 +403,7 @@ nav a:hover::after, nav a.active::after { transform: scaleX(1); }
 .badges { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* =============================================
-   PROGETTI — GRID (sostituisce il carousel)
+   PROGETTI — GRID
    ============================================= */
 #projects { background: var(--bg); }
 .projects-grid {
@@ -583,7 +583,123 @@ footer .small { font-size: 11px; opacity: 0.5; }
 }
 
 /* =============================================
-   RESPONSIVE AGGIORNATO
+   RESPONSIVE — TABLET (601px – 1024px)
+   ============================================= */
+
+/* ── Tablet grande: 901px – 1024px ── */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .container { width: min(1100px, 100% - 40px); }
+
+  /* Header: comprimi i link per evitare overflow */
+  nav a { font-size: 13px; padding: 6px 10px; }
+  .header-name { font-size: 16px; }
+
+  /* Hero: riduci gap e dimensione avatar */
+  .hero-layout { gap: 44px; }
+  .avatar-ring, .avatar { width: 240px; height: 240px; }
+  #hero { padding: 90px 0 70px; }
+
+  /* Griglia about: mantiene 2 colonne ma più stretta */
+  .about-grid { max-width: 100%; gap: 24px; }
+
+  /* Formazione e progetti: 2 colonne su tablet grande */
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Skills: 2 colonne */
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Lingue: affiancate */
+  .languages-grid { max-width: 100%; grid-template-columns: repeat(2, 1fr); }
+
+  /* Contatti: 2 colonne */
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Tablet medio: 769px – 900px ── */
+@media (min-width: 769px) and (max-width: 900px) {
+  .container { width: min(1100px, 100% - 32px); }
+
+  /* Header: affiancati ma compressi */
+  .header-content { gap: 12px; }
+  .header-name { font-size: 15px; }
+  nav a { font-size: 12px; padding: 5px 8px; }
+  .profile-pic { width: 38px; height: 38px; }
+
+  /* Hero: colonna singola centrata (come mobile), avatar più grande del mobile */
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-image { order: -1; }
+  .avatar-ring, .avatar { width: 220px; height: 220px; }
+  .hero-cta { justify-content: center; }
+  .hero-sub { margin-inline: auto; }
+  #hero { padding: 72px 0 56px; }
+
+  /* About: una colonna */
+  .about-grid { grid-template-columns: 1fr; }
+  .about-grid p:last-child { grid-column: auto; }
+
+  /* Cards formazione: 2 colonne */
+  .cards { grid-template-columns: repeat(2, 1fr); }
+
+  /* Skills: 2 colonne */
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Progetti: 2 colonne */
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Lingue: affiancate */
+  .languages-grid { max-width: 100%; grid-template-columns: repeat(2, 1fr); }
+
+  /* Contatti: 2 colonne */
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Tablet piccolo / landscape phone: 601px – 768px ── */
+@media (min-width: 601px) and (max-width: 768px) {
+  section { padding: 64px 0; }
+  .container { width: min(1100px, 100% - 28px); }
+
+  /* Header: wrap su due righe, centrato */
+  .header-content { flex-direction: column; gap: 10px; text-align: center; }
+  nav ul { flex-wrap: wrap; justify-content: center; gap: 2px; }
+  nav a { font-size: 13px; padding: 5px 10px; }
+
+  /* Hero */
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 36px;
+  }
+  .hero-image { order: -1; }
+  .avatar-ring, .avatar { width: 190px; height: 190px; }
+  .hero-cta { justify-content: center; }
+  .hero-sub { margin-inline: auto; }
+  #hero { padding: 56px 0 48px; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; }
+  .about-grid p:last-child { grid-column: auto; }
+
+  /* Cards e progetti: 2 colonne quando c'è spazio, altrimenti 1 */
+  .cards { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .projects-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+  /* Skills: 2 colonne */
+  .skills-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+  /* Lingue: affiancate */
+  .languages-grid { max-width: 100%; grid-template-columns: repeat(2, 1fr); }
+
+  /* Contatti: 2 colonne */
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤ 600px)
    ============================================= */
 @media (max-width: 900px) {
   .hero-layout { grid-template-columns: 1fr; text-align: center; }
@@ -594,13 +710,14 @@ footer .small { font-size: 11px; opacity: 0.5; }
   .about-grid { grid-template-columns: 1fr; }
   .about-grid p:last-child { grid-column: auto; }
 }
-@media (max-width: 768px) {
-  section { padding: 60px 0; }
+@media (max-width: 600px) {
+  section { padding: 56px 0; }
   .header-content { flex-direction: column; gap: 12px; text-align: center; }
   nav ul { flex-wrap: wrap; justify-content: center; gap: 4px; }
   nav a { font-size: 13px; padding: 5px 10px; }
   .hero-layout { gap: 36px; }
-  #hero { padding: 60px 0 50px; }
+  #hero { padding: 56px 0 46px; }
   .projects-grid { grid-template-columns: 1fr; }
   .languages-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
 }

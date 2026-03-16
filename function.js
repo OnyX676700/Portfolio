@@ -2,7 +2,7 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // ── Header: classe "scrolled" allo scroll ───
-const header = document.getElementById('site-header');
+const header  = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
@@ -10,39 +10,44 @@ window.addEventListener('scroll', () => {
 // ── Hamburger menu ───────────────────────────
 const hamburger = document.getElementById('hamburger');
 const navMobile = document.getElementById('nav-mobile');
-
-function closeMenu() {
-  hamburger.classList.remove('open');
-  navMobile.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-  navMobile.setAttribute('aria-hidden', 'true');
-}
+const overlay   = document.getElementById('menu-overlay');
 
 function openMenu() {
   hamburger.classList.add('open');
   navMobile.classList.add('open');
+  overlay.classList.add('active');
   hamburger.setAttribute('aria-expanded', 'true');
   navMobile.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden'; // blocca scroll pagina
 }
 
-if (hamburger && navMobile) {
-  hamburger.addEventListener('click', () => {
+function closeMenu() {
+  hamburger.classList.remove('open');
+  navMobile.classList.remove('open');
+  overlay.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  navMobile.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+if (hamburger && navMobile && overlay) {
+  // Toggle al click hamburger
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
     hamburger.classList.contains('open') ? closeMenu() : openMenu();
   });
 
+  // Chiudi cliccando l'overlay
+  overlay.addEventListener('click', closeMenu);
+
   // Chiudi cliccando un link del menu mobile
-  navMobile.querySelectorAll('a[data-mobile-nav]').forEach(link => {
+  navMobile.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Chiudi cliccando fuori dall'header
-  document.addEventListener('click', (e) => {
-    if (!header.contains(e.target)) closeMenu();
-  });
-
-  // Chiudi se si allarga la finestra oltre il breakpoint
+  // Chiudi se si allarga oltre 900px
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) closeMenu();
+    if (window.innerWidth > 900) closeMenu();
   }, { passive: true });
 }
 
@@ -60,34 +65,25 @@ let isDeleting  = false;
 
 function type() {
   const current = phrases[phraseIndex];
-
-  if (isDeleting) {
-    typingTarget.textContent = current.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typingTarget.textContent = current.substring(0, charIndex + 1);
-    charIndex++;
-  }
+  typingTarget.textContent = isDeleting
+    ? current.substring(0, charIndex - 1)
+    : current.substring(0, charIndex + 1);
+  isDeleting ? charIndex-- : charIndex++;
 
   let delay = isDeleting ? 40 : 70;
-
   if (!isDeleting && charIndex === current.length) {
-    delay = 2000;
-    isDeleting = true;
+    delay = 2000; isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     phraseIndex = (phraseIndex + 1) % phrases.length;
     delay = 400;
   }
-
   setTimeout(type, delay);
 }
-
 if (typingTarget) setTimeout(type, 800);
 
 // ── Reveal on scroll ────────────────────────
 const reveals = Array.from(document.querySelectorAll('.reveal'));
-
 if (!('IntersectionObserver' in window)) {
   reveals.forEach(el => el.classList.add('visible'));
 } else {
@@ -99,14 +95,12 @@ if (!('IntersectionObserver' in window)) {
       }
     });
   }, { threshold: 0.15 });
-
   reveals.forEach(el => revealObserver.observe(el));
 }
 
 // ── ScrollSpy ───────────────────────────────
 const sections = Array.from(document.querySelectorAll('main section[id]'));
-const navLinks  = Array.from(document.querySelectorAll('nav a[data-nav]'));
-
+const navLinks  = Array.from(document.querySelectorAll('[data-nav]'));
 if (sections.length && navLinks.length) {
   const spyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -118,13 +112,11 @@ if (sections.length && navLinks.length) {
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-
   sections.forEach(sec => spyObserver.observe(sec));
 }
 
-// ── Barre lingue animate all'entrata ────────
+// ── Barre lingue animate ─────────────────────
 const languageBars = Array.from(document.querySelectorAll('.language-bar'));
-
 if (languageBars.length && 'IntersectionObserver' in window) {
   const barObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -139,9 +131,5 @@ if (languageBars.length && 'IntersectionObserver' in window) {
       }
     });
   }, { threshold: 0.4 });
-
-  languageBars.forEach(bar => {
-    bar.style.width = '0%';
-    barObserver.observe(bar);
-  });
+  languageBars.forEach(bar => { bar.style.width = '0%'; barObserver.observe(bar); });
 }

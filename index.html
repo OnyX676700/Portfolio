@@ -5,8 +5,11 @@
   <title>Personal Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="img/logo.png" type="image/jpeg">
+  <link rel="apple-touch-icon" href="img/logo.png">
   <meta name="description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico da Trapani.">
   <meta name="author" content="Federico La Russa">
+  <meta property="og:url" content="https://tuosito.it">
+  <meta property="og:site_name" content="Federico La Russa Portfolio">
   <meta property="og:title" content="Personal Portfolio">
   <meta property="og:description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico.">
   <meta property="og:type" content="website">
@@ -20,17 +23,17 @@
 </head>
 <body>
 
-<!--  HEADER  -->
 <header id="site-header">
+  <div class="menu-overlay" id="menu-overlay"></div>
   <div class="container header-content">
 
     <div class="header-left">
-      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="48" height="48" fetchpriority="high">
+      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="44" height="44" fetchpriority="high">
       <span class="header-name">Federico La Russa</span>
     </div>
 
-    <!-- Navigazione desktop -->
-    <nav aria-label="Navigazione principale" class="nav-desktop">
+    <!-- Nav desktop -->
+    <nav class="nav-desktop" aria-label="Navigazione principale">
       <ul>
         <li><a href="#about"     data-nav>Chi sono</a></li>
         <li><a href="#education" data-nav>Formazione</a></li>
@@ -42,7 +45,7 @@
       </ul>
     </nav>
 
-    <!-- Pulsante hamburger (solo mobile/tablet piccolo) -->
+    <!-- Hamburger (mobile/tablet) -->
     <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -51,8 +54,8 @@
 
   </div>
 
-  <!-- Menu mobile a tendina -->
-  <nav class="nav-mobile" id="nav-mobile" aria-label="Navigazione mobile" aria-hidden="true">
+  <!-- Tendina mobile -->
+  <nav class="nav-mobile" id="nav-mobile" aria-label="Menu mobile" aria-hidden="true">
     <ul>
       <li><a href="#about"     data-nav data-mobile-nav>Chi sono</a></li>
       <li><a href="#education" data-nav data-mobile-nav>Formazione</a></li>
@@ -60,10 +63,9 @@
       <li><a href="#projects"  data-nav data-mobile-nav>Progetti</a></li>
       <li><a href="#languages" data-nav data-mobile-nav>Lingue</a></li>
       <li><a href="#contact"   data-nav data-mobile-nav>Contatti</a></li>
-      <li><a href="cv.pdf" download="CV.pdf" class="cv-link">CV</a></li>
+      <li class="nav-cv-item"><a href="cv.pdf" download="CV.pdf">CV</a></li>
     </ul>
   </nav>
-
 </header>
 
 <main>
@@ -291,11 +293,10 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
     <p>© <span id="year"></span> Realizzato e progettato da Federico La Russa · Tutti i diritti riservati</p>
-    <p class="small">Costruito con HTML, CSS e JavaScript puro, nessun framework.</p>
+    <p class="small">Designed and developed from scratch with HTML, CSS and Vanilla JavaScript.</p>
   </div>
 </footer>
 

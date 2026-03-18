@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
+  <!-- Imposta la codifica dei caratteri -->
   <meta charset="UTF-8">
+  
+  <!-- Titolo che appare nella tab del browser -->
   <title>Personal Portfolio</title>
+  
+  <!-- Rende il sito responsive: si adatta a mobile e tablet -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Icona piccola che appare nella tab del browser (favicon) -->
   <link rel="icon" href="img/logo.png" type="image/jpeg">
+  
+  <!-- Icona quando si salva il sito nella home screen di iPhone/iPad -->
   <link rel="apple-touch-icon" href="img/logo.png">
-  <meta name="description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico da Trapani.">
+  
+  <!-- Descrizione che appare sotto il titolo nei risultati di Google -->
+  <meta name="description" content="Portfolio di Federico La Russa...">
+  
+  <!-- Dichiara l'autore della pagina (utile per SEO) -->
   <meta name="author" content="Federico La Russa">
+  
+  <!-- URL canonico della pagina -->
   <meta property="og:url" content="https://onyx676700.github.io/Portfolio/">
+  
+    <!-- Nome del sito mostrato sui social -->
   <meta property="og:site_name" content="Federico La Russa Portfolio">
+  
+  <!-- Titolo mostrato nell'anteprima social -->
   <meta property="og:title" content="Personal Portfolio">
-  <meta property="og:description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico.">
+  
+  <!-- Descrizione mostrata nell'anteprima social -->
+  <meta property="og:description" content="Portfolio di Federico La Russa...">
+  
+  <!-- Tipo di contenuto (website, article, ecc.) -->
   <meta property="og:type" content="website">
+  
+  <!-- Immagine di anteprima quando il link viene condiviso -->
   <meta property="og:image" content="img/Pic.png">
 
-  <!-- JSON-LD structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Federico La Russa",
-    "jobTitle": "Junior Developer",
-    "url": "https://onyx676700.github.io/Portfolio/",
-    "email": "fedelarussa06@gmail.com",
-    "address": { "@type": "PostalAddress", "addressLocality": "Trapani", "addressCountry": "IT" },
-    "sameAs": [
-      "https://github.com/OnyX676700",
-      "https://www.linkedin.com/in/federico-la-russa-520085381/"
-    ]
-  }
-  </script>
 
+  <!-- Google Fonts: carica i font Syne (titoli) e DM Sans (testo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- preconnect: si connette in anticipo a Google per caricare i font più veloce -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome: libreria di icone (es. envelope, github, linkedin...) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <!-- Foglio di stile CSS del sito -->
   <link rel="stylesheet" href="styles.css">
+  
+<!-- Script -->
   <script src="function.js" defer></script>
+  
 </head>
+
 <body>
 
+<!-- HEADER -->
 <header id="site-header">
+
+  <!-- Overlay scuro che appare dietro il menu mobile quando è aperto -->
   <div class="menu-overlay" id="menu-overlay"></div>
+ 
   <div class="container header-content">
 
+    <!-- Logo / nome a sinistra -->
     <div class="header-left">
-      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="44" height="44" fetchpriority="high" loading="eager">
+      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic"
+           width="44" height="44" fetchpriority="high" loading="eager">
       <span class="header-name">Federico La Russa</span>
     </div>
 
-    <!-- Nav desktop -->
+    <!-- Navigazione desktop (visibile solo su schermi grandi) -->
     <nav class="nav-desktop" aria-label="Navigazione principale">
+
+    <!-- aria-label: descrive la nav agli screen reader (accessibilità) -->
       <ul>
         <li><a href="#about"     data-nav>Chi sono</a></li>
         <li><a href="#education" data-nav>Formazione</a></li>
@@ -63,17 +93,23 @@
       </ul>
     </nav>
 
-    <!-- Hamburger (mobile/tablet) -->
-    <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
+    <!-- Bottone hamburger visibile solo su mobile/tablet -->
+    <button class="hamburger" id="hamburger"
+            aria-label="Apri menu" aria-expanded="false">
+    <!-- aria-expanded: dice agli screen reader se il menu è aperto o chiuso -->
       <span></span>
       <span></span>
       <span></span>
+      <!-- I tre <span> formano le tre linee dell'icona hamburger via CSS -->
     </button>
 
   </div>
 
-  <!-- Sidebar mobile -->
-  <nav class="nav-mobile" id="nav-mobile" aria-label="Menu mobile" aria-hidden="true">
+  <!-- Menu laterale (sidebar) che appare su mobile quando si clicca hamburger -->
+  <nav class="nav-mobile" id="nav-mobile"
+       aria-label="Menu mobile" aria-hidden="true">
+  <!-- aria-hidden="true": nascosto agli screen reader finché non è aperto -->
+
     <ul>
       <li><a href="#about"     data-nav data-mobile-nav>Chi sono</a></li>
       <li><a href="#education" data-nav data-mobile-nav>Formazione</a></li>
@@ -86,80 +122,109 @@
   </nav>
 </header>
 
-<!-- Bottone torna su -->
+<!-- Bottone "torna su" che appare dopo aver scrollato verso il basso -->
 <button class="back-to-top" id="back-to-top" aria-label="Torna in cima">
+
+  <!-- Icona freccia su di Font Awesome -->
   <i class="fa-solid fa-chevron-up"></i>
+  
 </button>
 
 <main>
+<!-- MAIN: contenuto principale della pagina -->
 
-  <!-- HERO -->
+  <!-- SEZIONE HERO -->
   <section id="hero" aria-label="Presentazione">
     <div class="container hero-layout">
+
+      <!-- Testo a sinistra -->
       <div class="hero-text">
         <p class="hero-label">👋 Benvenuti nel mio portfolio.</p>
-        <h1>Junior Developer<br><span class="accent">&amp; Perito Informatico</span></h1>
+        <h1>Junior Developer<br>
+          <span class="accent">&amp; Perito Informatico</span>
+        </h1>
+        <!-- Paragrafo vuoto: il JS scriverà qui l'effetto "macchina da scrivere" -->
         <p class="hero-sub" id="typing-target"></p>
+        
+        <!-- CTA = Call To Action: bottoni di azione principali -->
         <div class="hero-cta">
+          
           <a href="#projects" class="btn-primary">Vedi i progetti</a>
           <a href="#contact"  class="btn-ghost">Contattami</a>
         </div>
       </div>
+
+      <!-- Foto a destra -->
       <div class="hero-image">
         <div class="avatar-ring">
-          <img src="img/Pic.png" alt="Ritratto di Federico La Russa" class="avatar" width="280" height="280" loading="eager">
+          <!-- avatar-ring: cerchio decorativo intorno alla foto (fatto in CSS) -->
+          <img src="img/Pic.png" alt="Ritratto di Federico La Russa"
+               class="avatar" width="280" height="280" loading="eager">
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- CHI SONO -->
+  <!-- SEZIONE CHI SONO -->
   <section id="about">
     <div class="container">
       <h2 class="section-title reveal">Chi sono</h2>
+      <!-- reveal: classe usata dal JS per animare l'apparizione quando si scrolla -->
       <div class="about-grid reveal">
-        <p>Mi chiamo <strong>Federico La Russa</strong>, ho 19 anni e vengo da Trapani. Ho conseguito il diploma di <strong>Perito Informatico</strong> all'I.T.I. Leonardo da Vinci, dove ho sviluppato una solida base in programmazione, reti, sistemi e sviluppo software.</p>
-        <p>La mia passione per l'informatica nasce dalla voglia di <strong>costruire cose che funzionano</strong>: mi piace partire da un'idea e trasformarla in un prodotto digitale curato, dalla struttura del codice all'interfaccia utente. Mi oriento verso lo <strong>sviluppo web full-stack</strong>, con particolare interesse per il frontend.</p>
-        <p>Sono una persona curiosa, precisa e motivata a crescere. Cerco opportunità dove poter contribuire concretamente, imparare da professionisti esperti e migliorare ogni giorno.</p>
+        <p>Mi chiamo <strong>Federico La Russa</strong>...</p>
+        <p>La mia passione per l'informatica...</p>
+        <p>Sono una persona curiosa...</p>
       </div>
     </div>
   </section>
 
-  <!-- FORMAZIONE -->
+  <!-- SEZIONE FORMAZIONE -->
   <section id="education">
     <div class="container">
       <h2 class="section-title reveal">Formazione</h2>
       <div class="cards">
+
+        <!-- card -->
         <article class="card reveal">
+
+          <!-- Icona cappello di laurea da Font Awesome -->
           <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <h3>Perito Informatico</h3>
           <p class="card-meta">2020 – 2025 · I.T.I Leonardo da Vinci · Trapani</p>
-          <p>Percorso quinquennale in informatica con programmazione, reti, sistemi operativi, basi di dati e sviluppo software.</p>
+          <p>Percorso quinquennale...</p>
         </article>
+
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-certificate"></i></div>
           <h3>Certificazione EIPASS</h3>
           <p class="card-meta">2025 · Trapani</p>
-          <p>Competenze digitali in ambito Office, navigazione sicura, email, sicurezza informatica e servizi digitali.</p>
+          <p>Competenze digitali...</p>
         </article>
+
         <article class="card reveal">
           <div class="card-icon"><i class="fa-solid fa-code"></i></div>
           <h3>Sviluppo software Zucchetti</h3>
           <p class="card-meta">2025 · Trapani</p>
-          <p>Sviluppo di un'applicazione interattiva in JavaScript, HTML e CSS in collaborazione con Zucchetti.</p>
+          <p>Sviluppo di un'applicazione...</p>
         </article>
+
       </div>
     </div>
   </section>
 
-  <!-- COMPETENZE -->
+  <!-- SEZIONE COMPETENZE -->
   <section id="skills">
     <div class="container">
       <h2 class="section-title reveal">Competenze</h2>
       <div class="skills-grid">
+
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-globe"></i> Linguaggi &amp; Web</h3>
+
+          <!-- Ogni badge è un'etichetta visiva per una tecnologia -->
           <div class="badges">
+            
             <span class="badge"><i class="fa-brands fa-html5"></i> HTML</span>
             <span class="badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
             <span class="badge">Tailwind CSS</span>
@@ -172,6 +237,7 @@
             <span class="badge"><i class="fa-solid fa-code"></i> Assembly</span>
           </div>
         </div>
+
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-database"></i> Database &amp; Sistemi</h3>
           <div class="badges">
@@ -181,6 +247,7 @@
             <span class="badge"><i class="fa-solid fa-envelope"></i> Posta elettronica</span>
           </div>
         </div>
+
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-network-wired"></i> Reti &amp; Sicurezza</h3>
           <div class="badges">
@@ -189,26 +256,34 @@
             <span class="badge"><i class="fa-solid fa-shield-alt"></i> Sicurezza informatica</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- PROGETTI -->
+  <!-- SEZIONE PROGETTI -->
   <section id="projects">
     <div class="container">
       <h2 class="section-title reveal">Progetti</h2>
       <div class="projects-grid">
+
         <article class="card card--project reveal">
           <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
           <h3>Gioco STEM — Indovina il personaggio</h3>
           <div class="tech-badges">
+
+            <!-- Badge con le tecnologie usate nel progetto -->
             <span class="badge badge--tech">JavaScript</span>
             <span class="badge badge--tech">HTML</span>
             <span class="badge badge--tech">CSS</span>
           </div>
           <p>Applicazione interattiva sviluppata in collaborazione con Zucchetti per indovinare personaggi del mondo STEM.</p>
-          <a href="#" class="btn-card disabled" aria-disabled="true" tabindex="-1">Non disponibile</a>
+          <a href="#" class="btn-card disabled" aria-disabled="true" tabindex="-1">
+            Non disponibile
+          </a>
+
         </article>
+
         <article class="card card--project reveal">
           <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
           <h3>Portfolio personale</h3>
@@ -217,9 +292,10 @@
             <span class="badge badge--tech">CSS</span>
             <span class="badge badge--tech">JavaScript</span>
           </div>
-          <p>Sito portfolio personale progettato e sviluppato da zero, con animazioni, scroll spy e design responsive.</p>
+          <p>Sito portfolio personale...</p>
           <a href="#" class="btn-card">Sei qui 👋</a>
         </article>
+
         <article class="card card--project reveal">
           <div class="card-icon"><i class="fa-solid fa-building"></i></div>
           <h3>Workhub Milano</h3>
@@ -229,26 +305,27 @@
             <span class="badge badge--tech">JavaScript</span>
             <span class="badge badge--tech">Tailwind CSS</span>
           </div>
-          <p>Sito di un centro di lavoro collaborativo a Milano.</p>
-          <a href="#" class="btn-card disabled" aria-disabled="true" tabindex="-1">Non disponibile</a>
+          <p>Sito di un centro di lavoro collaborativo...</p>
+          <a href="#" class="btn-card disabled" aria-disabled="true" tabindex="-1">
+            Non disponibile
+          </a>
         </article>
+
       </div>
     </div>
   </section>
 
-  <!-- LINGUE -->
+  <!-- SEZIONE LINGUE -->
   <section id="languages">
     <div class="container">
       <h2 class="section-title reveal">Lingue</h2>
       <div class="languages-grid">
+
         <div class="language-card reveal">
           <div class="language-header">
             <div class="language-flag-wrap">
-              <img src="https://flagcdn.com/w80/it.png"
-                   alt="Bandiera Italia"
-                   class="language-flag-img"
-                   loading="lazy"
-                   onerror="this.style.display='none';this.parentElement.innerHTML='🇮🇹'">
+              <img src="https://flagcdn.com/w80/it.png" alt="Bandiera Italia" class="language-flag-img" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='🇮🇹'">
+              <!-- onerror: se l'immagine non carica, mostra l'emoji della bandiera -->
             </div>
             <div>
               <h3>Italiano</h3>
@@ -256,10 +333,14 @@
             </div>
           </div>
           <div class="language-bar-wrap">
+
+            <!-- --bar-width: variabile CSS custom passata inline per la larghezza della barra -->
             <div class="language-bar" style="--bar-width: 100%"></div>
+            
           </div>
-          <p class="language-note">Lingua madre, parlata e scritta a livello avanzato in ogni contesto.</p>
+          <p class="language-note">Lingua madre...</p>
         </div>
+
         <div class="language-card reveal">
           <div class="language-header">
             <div class="language-flag-wrap">
@@ -275,34 +356,46 @@
             </div>
           </div>
           <div class="language-bar-wrap">
+
+            <!-- 55%: rappresenta il livello B1 sulla barra -->
             <div class="language-bar" style="--bar-width: 55%"></div>
+            
           </div>
-          <p class="language-note">Lettura tecnica, documentazione e comunicazione scritta di base.</p>
+          <p class="language-note">Lettura tecnica...</p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- CONTATTI -->
+  <!-- SEZIONE CONTATTI -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title reveal">Contatti</h2>
-      <p class="contact-intro reveal">Per collaborazioni, opportunità di lavoro o semplicemente per un saluto:</p>
+      <p class="contact-intro reveal">Per collaborazioni, opportunità di lavoro...</p>
       <div class="contact-grid reveal">
+
+        <!-- mailto: apre il client email dell'utente -->
         <a href="mailto:fedelarussa06@gmail.com" class="contact-card">
+      
           <i class="fa-solid fa-envelope"></i>
           <div>
             <span class="contact-label">Email</span>
             <span class="contact-value">fedelarussa06@gmail.com</span>
           </div>
         </a>
-        <a href="https://www.linkedin.com/in/federico-la-russa-520085381/" target="_blank" rel="noopener" class="contact-card">
+
+        <!-- target="_blank": apre in una nuova tab -->
+        <!-- rel="noopener": sicurezza — impedisce alla pagina esterna di accedere alla tua -->
+        <a href="https://www.linkedin.com/in/..." target="_blank" rel="noopener" class="contact-card">
+
           <i class="fa-brands fa-linkedin"></i>
           <div>
             <span class="contact-label">LinkedIn</span>
             <span class="contact-value">Federico La Russa</span>
           </div>
         </a>
+
         <a href="https://github.com/OnyX676700" target="_blank" rel="noopener" class="contact-card">
           <i class="fa-brands fa-github"></i>
           <div>
@@ -310,25 +403,36 @@
             <span class="contact-value">OnyX676700</span>
           </div>
         </a>
+
+        <!-- tel: su mobile apre direttamente il telefono per chiamare -->
         <a href="tel:+393456074838" class="contact-card">
+        
           <i class="fa-solid fa-phone"></i>
           <div>
             <span class="contact-label">Telefono</span>
             <span class="contact-value">+39 345 607 4838</span>
           </div>
         </a>
+
       </div>
-      <p class="contact-location reveal"><i class="fa-solid fa-map-marker-alt"></i> Trapani, Italia</p>
+      <p class="contact-location reveal">
+        <i class="fa-solid fa-map-marker-alt"></i> Trapani, Italia
+      </p>
     </div>
   </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
-    <p>© <span id="year"></span> Realizzato e progettato da Federico La Russa · Tutti i diritti riservati</p>
+
+    <!-- id="year": il JS inserirà qui l'anno corrente in automatico -->
+    <p>© <span id="year"></span> Realizzato da Federico La Russa...</p>
     <p class="small">Designed and developed from scratch with HTML, CSS and JavaScript.</p>
-    <p class="small footer-updated">Ultimo aggiornamento: <span id="last-updated"></span></p>
+    
+    <!-- id="last-updated": il JS inserirà qui la data dell'ultimo aggiornamento -->
+    <p class="small footer-updated"> Ultimo aggiornamento: <span id="last-updated"></span> </p>
   </div>
 </footer>
 

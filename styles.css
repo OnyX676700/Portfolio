@@ -84,13 +84,13 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   flex-shrink: 0;
 }
 
-/* ── Nav desktop ── */
+/* Nav desktop */
 .nav-desktop { display: flex; align-items: center; }
 .nav-desktop ul { display: flex; gap: 2px; list-style: none; flex-wrap: nowrap; }
 .nav-desktop a {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--accent-light);
   padding: 6px 10px;
   border-radius: var(--radius-sm);
   transition: color var(--transition);
@@ -124,7 +124,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   color: var(--bg) !important;
 }
 
-/* ── Hamburger ── */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -153,7 +153,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Overlay scuro ── */
+/* Overlay */
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -163,12 +163,9 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   transition: opacity 0.3s ease;
   z-index: 250;
 }
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
+.menu-overlay.active { opacity: 1; pointer-events: all; }
 
-/* ── Nav mobile: sidebar da destra ── */
+/* Nav mobile */
 .nav-mobile {
   position: fixed;
   top: 0;
@@ -184,14 +181,13 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-mobile.open { right: 0; }
-
 .nav-mobile ul { list-style: none; padding: 8px 0 24px; }
 .nav-mobile ul li a {
   display: block;
   padding: 13px 24px;
   font-size: 15px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--accent-light);
   border-left: 2px solid transparent;
   transition: color var(--transition), background var(--transition),
               border-color var(--transition), padding-left var(--transition);
@@ -244,15 +240,8 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease, background var(--transition);
 }
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-.back-to-top:hover {
-  background: var(--accent-light);
-  color: var(--bg);
-}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.back-to-top:hover { background: var(--accent-light); color: var(--bg); }
 
 /* =============================================
    HERO
@@ -308,7 +297,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 }
 .hero-sub {
   font-size: 17px;
-  color: var(--text-muted);
+  color: var(--accent-light);
   max-width: 480px;
   margin-bottom: 40px;
   min-height: 28px;
@@ -339,7 +328,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   box-shadow: 0 8px 28px rgba(241,211,2,0.3);
 }
 .btn-ghost {
-  color: var(--text-muted);
+  color: var(--accent-light);
   font-weight: 500;
   padding: 12px 30px;
   border-radius: var(--radius-sm);
@@ -444,7 +433,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 }
 .card-icon { font-size: 20px; color: var(--accent); margin-bottom: 4px; }
 .card h3 { font-family: var(--font-display); font-size: 17px; color: var(--text); }
-.card-meta { font-size: 12px; color: var(--text-muted); letter-spacing: 0.03em; }
+.card-meta { font-size: 12px; color: var(--accent-light); letter-spacing: 0.03em; }
 .card p { font-size: 15px; color: var(--text); line-height: 1.65; flex: 1; }
 .tech-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0; }
 .btn-card {
@@ -467,7 +456,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 }
 .btn-card.disabled {
   border-color: var(--card-border);
-  color: var(--text-muted);
+  color: var(--accent-light);
   opacity: 0.4;
   pointer-events: none;
   cursor: default;
@@ -481,7 +470,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   align-items: center;
   gap: 5px;
   background: var(--bg-card);
-  color: var(--text-muted);
+  color: var(--accent-light);
   font-size: 13px;
   font-weight: 500;
   padding: 4px 12px;
@@ -536,6 +525,18 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 }
 .skill-group h3 i { color: var(--accent); }
 .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Badge gialli SOLO nella sezione competenze */
+.skill-group .badge {
+  color: var(--accent-light);
+  border-color: rgba(241, 211, 2, 0.3);
+  background: rgba(241, 211, 2, 0.05);
+}
+.skill-group .badge:hover {
+  background: rgba(241, 211, 2, 0.12);
+  color: var(--text);
+  border-color: var(--accent-light);
+}
 
 /* =============================================
    PROGETTI
@@ -607,11 +608,9 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 }
 .language-level.b1 {
   background: rgba(241,211,2,0.08);
-  color: var(--text-muted);
+  color: var(--accent-light);
   border: 1px solid var(--card-border);
 }
-
-/* Barra progresso lingue — unica classe corretta */
 .language-bar-wrap {
   height: 5px;
   background: rgba(255,255,255,0.06);
@@ -625,7 +624,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
   border-radius: 10px;
   transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.language-note { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+.language-note { font-size: 13px; color: var(--accent-light); line-height: 1.55; }
 
 /* =============================================
    CONTATTI
@@ -658,13 +657,13 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 .contact-card div { display: flex; flex-direction: column; }
 .contact-label {
   font-size: 11px;
-  color: var(--text-muted);
+  color: var(--accent-light);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 500;
 }
 .contact-value { font-size: 14px; color: var(--text); font-weight: 500; word-break: break-all; }
-.contact-location { font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+.contact-location { font-size: 14px; color: var(--accent-light); display: flex; align-items: center; gap: 8px; }
 .contact-location i { color: var(--accent); }
 
 /* =============================================
@@ -672,7 +671,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
    ============================================= */
 footer {
   background: var(--header-bg);
-  color: var(--text-muted);
+  color: var(--accent-light);
   padding: 28px 0;
   font-size: 13px;
   border-top: 1px solid var(--card-border);
@@ -700,7 +699,7 @@ footer .small { font-size: 11px; opacity: 0.5; }
 .languages-grid .reveal:nth-child(2) { transition-delay: 0.12s; }
 
 /* =============================================
-   ACCESSIBILITÀ
+   ACCESSIBILITA'
    ============================================= */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -713,7 +712,7 @@ footer .small { font-size: 11px; opacity: 0.5; }
 }
 
 /* =============================================
-   TABLET GRANDE (901px – 1024px)
+   TABLET GRANDE (901px - 1024px)
    ============================================= */
 @media (min-width: 901px) and (max-width: 1024px) {
   .container { width: min(1100px, 100% - 40px); }
@@ -735,7 +734,7 @@ footer .small { font-size: 11px; opacity: 0.5; }
 }
 
 /* =============================================
-   TABLET E MOBILE (≤ 900px)
+   TABLET E MOBILE (<= 900px)
    ============================================= */
 @media (max-width: 900px) {
   .nav-desktop { display: none !important; }
@@ -743,7 +742,6 @@ footer .small { font-size: 11px; opacity: 0.5; }
   .header-content { padding: 13px 0; }
 }
 
-/* ── Tablet (601px – 900px) ── */
 @media (min-width: 601px) and (max-width: 900px) {
   .container { width: min(1100px, 100% - 32px); }
   section { padding: 64px 0; }
@@ -762,7 +760,6 @@ footer .small { font-size: 11px; opacity: 0.5; }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── Mobile (≤ 600px) ── */
 @media (max-width: 600px) {
   .container { width: min(1100px, 100% - 24px); }
   section { padding: 48px 0; }
